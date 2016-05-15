@@ -18,7 +18,7 @@ void DotStar::begin()
 
 void DotStar::display()
 {
-	Serial.print("display nLeds="); Serial.println(m_nLEDs);
+	//Serial.print("display nLeds="); Serial.println(m_nLEDs);
 	SPI.beginTransaction(dotstarSettings);
 	digitalWrite(m_enable, HIGH);
 
