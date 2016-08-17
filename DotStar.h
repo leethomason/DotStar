@@ -16,6 +16,10 @@ public:
 			green = (c>>8) & 0xff;
 			blue = c & 0xff;
 		}
+
+		void set(uint8_t r, uint8_t g, uint8_t b) {
+			red = r; green = g; blue = b;
+		}
 	};
 
 	DotStar(uint8_t enablePin);
