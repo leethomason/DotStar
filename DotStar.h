@@ -3,25 +3,36 @@
 
 #include <stdint.h>
 
+struct RGB {
+    uint8_t r = 0;
+    uint8_t g = 0;
+    uint8_t b = 0;
+
+	void set(uint8_t _r, uint8_t _g, uint8_t _b) {
+		r = _r; g = _g; b = _b;
+	}
+	void set(uint32_t c) {
+		r = (c & 0xff0000) >> 16;
+		g = (c & 0xff00) >> 8;
+		b = c & 0xff;
+	}
+    void scale(uint8_t s) {
+        r = (uint16_t(r) * uint16_t(s)) >> 8;
+        g = (uint16_t(g) * uint16_t(s)) >> 8;
+        b = (uint16_t(b) * uint16_t(s)) >> 8;
+    }
+	uint8_t operator[](const int index) const {
+		return *(&r + index);
+	}
+    uint8_t& operator[](const int index) {
+        return *(&r + index);
+    }
+};
+
+
 class DotStar
 {
 public:
-	struct RGB {
-		uint8_t red;
-		uint8_t green;
-		uint8_t blue;
-
-		void set(uint32_t c) {
-			red = (c>>16) & 0xff;
-			green = (c>>8) & 0xff;
-			blue = c & 0xff;
-		}
-
-		void set(uint8_t r, uint8_t g, uint8_t b) {
-			red = r; green = g; blue = b;
-		}
-	};
-
 	DotStar(uint8_t enablePin);
 	void begin();
 

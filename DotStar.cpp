@@ -33,9 +33,9 @@ void DotStar::display()
 		SPI.transfer(0xff);
 
 		// Value:
-		SPI.transfer((uint16_t(led->blue)  * m_brightness) >> 8);
-		SPI.transfer((uint16_t(led->green) * m_brightness) >> 8);
-		SPI.transfer((uint16_t(led->red)   * m_brightness) >> 8);
+		SPI.transfer((uint16_t(led->b) * m_brightness) >> 8);
+		SPI.transfer((uint16_t(led->g) * m_brightness) >> 8);
+		SPI.transfer((uint16_t(led->r) * m_brightness) >> 8);
 	}
 	// End frame.
 	for(int i=0; i<4; ++i) {
