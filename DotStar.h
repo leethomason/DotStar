@@ -20,6 +20,10 @@ struct RGB {
 		g = (c & 0xff00) >> 8;
 		b = c & 0xff;
 	}
+	void set(int index, uint8_t c) {
+		*(&r + index) = c;
+	}
+
 	uint32_t get() const {
 		return (uint32_t(r) << 16) | (uint32_t(g) << 8) | uint32_t(b);
 	}
