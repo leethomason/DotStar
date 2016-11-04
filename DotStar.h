@@ -4,6 +4,10 @@
 #include <stdint.h>
 
 struct RGB {
+	RGB() {}
+	RGB(uint32_t c) { set(c); }
+	RGB(uint8_t r, uint8_t g, uint8_t b) { set(r, g, b); }
+
     uint8_t r = 0;
     uint8_t g = 0;
     uint8_t b = 0;
