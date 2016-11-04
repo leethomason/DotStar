@@ -16,7 +16,11 @@ struct RGB {
 		g = (c & 0xff00) >> 8;
 		b = c & 0xff;
 	}
-    void scale(uint8_t s) {
+	uint32_t get() const {
+		return (uint32_t(r) << 16) | (uint32_t(g) << 8) | uint32_t(b);
+	}
+
+    void scale(uint16_t s) {
         r = (uint16_t(r) * uint16_t(s)) >> 8;
         g = (uint16_t(g) * uint16_t(s)) >> 8;
         b = (uint16_t(b) * uint16_t(s)) >> 8;
@@ -27,6 +31,10 @@ struct RGB {
     uint8_t& operator[](const int index) {
         return *(&r + index);
     }
+
+	bool operator==(const RGB& rhs) const {
+		return (r == rhs.r) && (g == rhs.g) && (b == rhs.b);
+	}
 };
 
 
