@@ -8,6 +8,11 @@ struct RGB {
     uint8_t g = 0;
     uint8_t b = 0;
 
+	RGB() {}
+	RGB(uint8_t _r, uint8_t _g, uint8_t _b) {
+		set(_r, _g, _b);
+	}
+
 	void set(uint8_t _r, uint8_t _g, uint8_t _b) {
 		r = _r; g = _g; b = _b;
 	}
@@ -16,8 +21,14 @@ struct RGB {
 		g = (c & 0xff00) >> 8;
 		b = c & 0xff;
 	}
+	void set(int index, uint8_t c) {
+		*(&r + index) = c;
+	}
 	uint32_t get() const {
 		return (uint32_t(r) << 16) | (uint32_t(g) << 8) | uint32_t(b);
+	}
+	uint8_t get(int index) const {
+		return *(&r + index);
 	}
 
     void scale(uint16_t s) {
