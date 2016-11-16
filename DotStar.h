@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 struct RGB {
+
 	RGB() {}
 	RGB(uint32_t c) { set(c); }
 	RGB(uint8_t r, uint8_t g, uint8_t b) { set(r, g, b); }
@@ -11,11 +12,6 @@ struct RGB {
     uint8_t r = 0;
     uint8_t g = 0;
     uint8_t b = 0;
-
-	RGB() {}
-	RGB(uint8_t _r, uint8_t _g, uint8_t _b) {
-		set(_r, _g, _b);
-	}
 
 	void set(uint8_t _r, uint8_t _g, uint8_t _b) {
 		r = _r; g = _g; b = _b;
@@ -79,6 +75,7 @@ private:
 	const RGB* 	m_leds = 0;
 	int 		m_nLEDs = 0;
 	uint16_t 	m_brightness = 256;
+	uint32_t	m_lastTime = 0;
 };
 
 #endif // GRINLIZ_DOTSTAR_INCLUDED

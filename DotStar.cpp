@@ -2,13 +2,15 @@
 #include <Arduino.h>
 #include <SPI.h>
 
+// 8 MHz seems to work for the prop shield.
+// With a level shifter, about 1 MHz is needed. (Possibly faster with testing.)
 static const SPISettings dotstarSettings(8000000, MSBFIRST, SPI_MODE0);
 
 DotStar::DotStar(uint8_t enable)
 {
 	m_enable = enable;
 	pinMode(m_enable, OUTPUT);
-	digitalWrite(m_enable, LOW);	// opposite of normal CS
+	digitalWrite(m_enable, LOW);
 }
 
 void DotStar::begin()
