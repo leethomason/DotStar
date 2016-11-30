@@ -73,6 +73,8 @@ public:
 	void display();
 
 	bool swMode() const { return m_clockPin || m_dataPin; }
+	uint8_t swClockPin() const { return m_clockPin; }
+	uint8_t swDataPin() const { return m_dataPin; }
 
 private:
 	void displaySPI();
