@@ -4,6 +4,9 @@
 #include <stdint.h>
 
 struct RGB {
+	enum {
+		BLACK = 0
+	};
 
 	RGB() {}
 	RGB(uint32_t c) { set(c); }
@@ -57,9 +60,9 @@ struct RGB {
 class DotStar
 {
 public:
-	DotStar(uint8_t enablePin=255);
+	DotStar();
 
-	void beginSPI();
+	void beginSPI(uint8_t enablePin);
 	void beginSW(uint8_t clockPin, uint8_t dataPin);
 
 	void attachLEDs(const RGB* leds, int nLEDs) {
