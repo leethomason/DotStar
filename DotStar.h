@@ -5,7 +5,14 @@
 
 struct RGB {
 	enum {
-		BLACK = 0
+		BLACK = 0,
+		RED = 0xff0000,
+		ORANGE = 0xffa500,
+		YELLOW = 0xffff00,
+		GREEN = 0x00ff00,
+		BLUE = 0x0000ff,
+		INDIGO = 0x4b0082,
+		VIOLET = 0xee82ee
 	};
 
 	RGB() {}
@@ -53,6 +60,10 @@ struct RGB {
 
 	bool operator==(const RGB& rhs) const {
 		return (r == rhs.r) && (g == rhs.g) && (b == rhs.b);
+	}
+
+	bool operator!=(const RGB& rhs) const {
+		return !(rhs == *this);
 	}
 };
 
